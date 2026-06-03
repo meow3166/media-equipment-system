@@ -1,27 +1,62 @@
-{% include "includes/header.html" %}
-<main>
+{% include "includes/layout-top.html" %}
+
+<main class="content">
 
     <section class="welcome-section">
 
-        <h2 id="welcome-message"></h2>
+        <h2>
+            영방과 기자재를 간편하게 대여하세요
+        </h2>
+
         <p>
-            오늘도 좋은 하루 되세요.
+            다양한 촬영 장비를 확인하고
+            손쉽게 대여 신청할 수 있습니다.
         </p>
+
     </section>
+
     <section class="quick-menu">
+
         <div class="menu-card">
             대여 신청하기
         </div>
+
         <div class="menu-card">
             기자재 보기
         </div>
+
         <div class="menu-card">
-            내 대여내역^^^^
+            내 대여 내역
         </div>
-    </section>
-    <section class="dashboard-grid">
-        <!-- 중앙 대시보드 영역 -->
 
     </section>
+
+    <section class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <h3>공지사항</h3>
+
+            <ul>
+                <li>여름방학 대여 안내</li>
+                <li>반납 시간 변경 안내</li>
+                <li>장비 관리 방법 안내</li>
+            </ul>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3>대여 절차</h3>
+
+            <p>
+                장비선택 → 신청 → 승인 → 수령 → 반납
+            </p>
+
+        </div>
+
+    </section>
+
 </main>
-{% include "includes/footer.html" %}
+
+{% include "includes/layout-bottom.html" %}

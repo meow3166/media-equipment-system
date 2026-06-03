@@ -23,6 +23,7 @@ nunjucks.configure(path.join(__dirname, 'views'), {
 // 정적 파일
 app.use('/assets', express.static(path.join(__dirname, 'views', 'assets')));
 
+
 // 라우터
 app.use('/', require('./routers/public'));
 

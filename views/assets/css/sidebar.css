@@ -1,0 +1,41 @@
+.sidebar {
+    width: 260px;
+    background: #0B3D91;
+    color: white;
+    padding: 20px;
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo h2 {
+    font-size: 22px;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li > span,
+.sidebar nav ul li > a {
+    display: block;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.sidebar nav ul li ul {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.sidebar nav ul li ul li a {
+    display: block;
+    padding: 8px 10px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.sidebar nav ul li ul li a:hover {
+    opacity: 1;
+}
