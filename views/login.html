@@ -1,27 +1,82 @@
-{% include "includes/header.html" %}
+<!DOCTYPE html>
+<html lang="ko">
 
-<main class="login-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="login-box">
+    <title>로그인</title>
 
-        <h2>로그인</h2>
-        {% if errorMessage %}
-        <p class="error-message">{{ errorMessage }}</p>
-        {% endif %}
-        <form action="/auth/login" method="post">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
+</head>
 
-            <input type="text" name="P_userId" placeholder="아이디" required>
+<body>
 
-            <input type="password" name="P_password" placeholder="비밀번호" required>
+    <main class="login-page">
 
-            <button type="submit">
-                로그인
-            </button>
+        <section class="login-container">
 
-        </form>
+            <div class="login-logo">
+                <h1>기자재 대여 시스템</h1>
+                <p>영화방송학과 기자재 관리 플랫폼</p>
+            </div>
 
-    </div>
+            {% if errorMessage %}
+            <div class="login-error">
+                {{ errorMessage }}
+            </div>
+            {% endif %}
 
-</main>
+            <form
+                action="/auth/login"
+                method="post"
+                class="login-form"
+            >
 
-{% include "includes/footer.html" %}
+                <div class="login-group">
+                    <label for="P_userId">아이디</label>
+
+                    <input
+                        type="text"
+                        id="P_userId"
+                        name="P_userId"
+                        placeholder="아이디를 입력하세요"
+                        required
+                    >
+                </div>
+
+                <div class="login-group">
+                    <label for="P_password">비밀번호</label>
+
+                    <input
+                        type="password"
+                        id="P_password"
+                        name="P_password"
+                        placeholder="비밀번호를 입력하세요"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    로그인
+                </button>
+
+            </form>
+
+            <div class="login-links">
+                <a href="/auth/register">
+                    회원가입
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
