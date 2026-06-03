@@ -1,5 +1,5 @@
 const pool = require("../database/db");
-
+const bcrypt = require("bcrypt");
 exports.getLoginPage = (req, res) => {
     res.render("login.html");
 };
@@ -31,7 +31,9 @@ exports.login = async (req, res) => {
 
         const user = rows[0];
 
-        if (user.password_hash !== P_password) {
+        const isPasswordMatch = await bcrypt.compare(P_password, user.password_hash);
+
+        if (!isPasswordMatch) {
             return res.render("login.html", {
                 errorMessage: "아이디 또는 비밀번호가 올바르지 않습니다."
             });
