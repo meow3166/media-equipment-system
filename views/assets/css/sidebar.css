@@ -18,7 +18,7 @@
 
 
 .arrow{
-    display:inline-block;
+    /* display:inline-block; */
     transition: transform .3s;
 }
 
@@ -38,9 +38,9 @@
 }
 
 /* 화살표 회전 */
-.menu-item.active .arrow{
+/* .menu-item.active .arrow{
     transform:rotate(180deg);
-}
+} */
 
 .sidebar {
     position: fixed;
