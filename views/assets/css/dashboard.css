@@ -1,3 +1,9 @@
+.content{
+    margin-left: 260px;
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
 .welcome-section {
     background: white;
     border-radius: 20px;
@@ -18,24 +24,27 @@
 }
 
 .menu-card {
-    background: white;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    /* background: white;
     padding: 25px;
 
     border-radius: 20px;
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: 0.2s; */
 }
 
 .menu-card:hover {
     transform: translateY(-3px);
 }
 
-.dashboard-grid {
+/* .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-}
+} */
 
 .dashboard-card {
     background: white;
@@ -49,4 +58,187 @@
 
 .dashboard-card ul li {
     margin-bottom: 10px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-areas:
+        "rental availability"
+        "rental notice"
+        "guide guide";
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.rental-status-card {
+    grid-area: rental;
+}
+
+.availability-card {
+    grid-area: availability;
+}
+
+.notice-card {
+    grid-area: notice;
+}
+
+.guide-card {
+    grid-area: guide;
+}
+
+
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card-more {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #6b6f80;
+  text-decoration: none;
+}
+
+.card-more:hover {
+  color: #1b2a6b;
+}
+
+.empty-state {
+  color: #6b6f80;
+  font-size: 0.9rem;
+  padding: 12px 0;
+  text-align: center;
+}
+
+/* 내 대여 현황 */
+.rental-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rental-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #e6e8f0;
+  border-radius: 10px;
+}
+
+.rental-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin: 0 0 2px;
+}
+
+.rental-period {
+  font-size: 0.78rem;
+  color: #6b6f80;
+  margin: 0;
+}
+
+.status-badge {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-active {
+  background: #e7edff;
+  color: #1b2a6b;
+}
+
+.status-pending {
+  background: #fff2e2;
+  color: #b3691a;
+}
+
+.status-done {
+  background: #eef0f3;
+  color: #6b6f80;
+}
+
+/* 대여 가능 현황 */
+.availability-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availability-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.eq-count {
+  color: #6b6f80;
+  font-size: 0.82rem;
+}
+
+/* 공지사항 */
+.notice-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notice-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.notice-title {
+  font-size: 0.9rem;
+  color: #1c1c1e;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notice-title:hover {
+  color: #1b2a6b;
+}
+
+.notice-date {
+  font-size: 0.78rem;
+  color: #6b6f80;
+  flex-shrink: 0;
+}
+
+/* 가이드 */
+.guide-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guide-list a {
+  font-size: 0.9rem;
+  color: #1c1c1e;
+  text-decoration: none;
+}
+
+.guide-list a:hover {
+  color: #1b2a6b;
 }

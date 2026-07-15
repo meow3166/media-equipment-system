@@ -1,62 +1,107 @@
 {% include "includes/layout-top.html" %}
 
 <main class="content">
-
     <section class="welcome-section">
-
         <h2>
-            영방과 기자재를 간편하게 대여하세요
+            안녕하세요, {{user.name}}님!
         </h2>
-
         <p>
-            다양한 촬영 장비를 확인하고
-            손쉽게 대여 신청할 수 있습니다.
+            오늘도 좋은 하루 되세요.
         </p>
-
     </section>
 
     <section class="quick-menu">
-
-        <div class="menu-card">
-            대여 신청하기
+        <div class="dashboard-card">
+            <a href="/rental/new" class="menu-card">
+                대여 신청하기
+            </a>    
         </div>
-
-        <div class="menu-card">
-            기자재 보기
+        <div class="dashboard-card">
+            <a href="/equipment" class="menu-card">
+                기자재 보기
+            </a>    
         </div>
-
-        <div class="menu-card">
-            내 대여 내역
+        <div class="dashboard-card"> 
+            <a href="/my/rentals" class="menu-card">
+                내 대여 내역
+            </a>    
         </div>
-
     </section>
 
     <section class="dashboard-grid">
-
         <div class="dashboard-card">
-
-            <h3>공지사항</h3>
-
-            <ul>
-                <li>여름방학 대여 안내</li>
-                <li>반납 시간 변경 안내</li>
-                <li>장비 관리 방법 안내</li>
+            <div class="card-header">
+                <h3>내 대여 현황</h3>
+                <a href="/my/rentals" class="card-more">더보기 &gt;</a>
+            </div>
+            <ul class="rental-list">
+                {% for item in myRentals %}
+                <li class="rental-item">
+                    <div class="rental-info">
+                        <p class="rental-name">
+                            {{ item.equipmentName }} {% if item.extraCount %} 외 {{ item.extraCount }}건{% endif %}
+                        </p>
+                        <p class="rental-period">
+                            {% if item.status=='active' %}
+                                대여기간 {{item.startDate}}-{{item.endDate}}
+                            {% else %}
+                                신청일 {{item.appliedDate}}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <span class="status-badge status-{{item.status}}">
+                        {% if item.status =='active' %}대여중{% elif item.status == 'pending' %}승인 대기중{% else %}{{item.statusLabel}}{% endif %}
+                    </span>
+                </li>
+                {% else %}
+                <li class="empty-state">현재 대여 내역이 없습니다.</li>
+                {% endfor %}
             </ul>
-
         </div>
 
         <div class="dashboard-card">
-
-            <h3>대여 절차</h3>
-
-            <p>
-                장비선택 → 신청 → 승인 → 수령 → 반납
-            </p>
-
+            <div class="card-header">
+                <h3>대여 가능 현황</h3>
+                <a href="/equipment" class="card-more">더보기 &gt;</a>
+            </div>
+            <ul class="availability-list">
+                {% for eq in availableEquipment %}
+                <li>
+                    <span class="eq-name">{{ eq.name }}</span>
+                    <span class="eq-count">{{ eq.availableCount }}대 가능</span>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
-
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>최근 공지사항</h3>
+                <a href="/board/notice" class="card-more">더보기 &gt;</a>
+            </div>
+            <ul class="notice-list">
+                {% for notice in recentNotices %}
+                <li>
+                    <a href="/board/notice/{{ notice.id }}" class="notice-title">{{ notice.title }}</a>
+                    <span class="notice-date">{{ notice.date }}</span>
+                </li>
+                {% else %}
+                <li class="empty-state">등록된 공지사항이 없습니다.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>자주 찾는 가이드</h3>
+            </div>
+            <ul class="guide-list">
+                {% for guide in popularGuides %}
+                <li>
+                    <a href="/guide/{{ guide.slug }}">{{ guide.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </section>
-
 </main>
 
 {% include "includes/layout-bottom.html" %}

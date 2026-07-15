@@ -1,8 +1,59 @@
+/* 드롭다운 제목 */
+.menu-toggle{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    cursor:pointer;
+
+    padding:12px 14px;
+    border-radius:10px;
+
+    font-weight:600;
+}
+
+.menu-toggle:hover{
+    background:rgba(255,255,255,.12);
+}
+
+
+.arrow{
+    /* display:inline-block; */
+    transition: transform .3s;
+}
+
+/* 접힌 상태 */
+.submenu{
+    max-height:0;
+    overflow:hidden;
+
+    transition:max-height .3s ease;
+
+    margin-left:15px;
+}
+
+/* 펼쳐진 상태 */
+.menu-item.active .submenu{
+    max-height:200px;
+}
+
+/* 화살표 회전 */
+/* .menu-item.active .arrow{
+    transform:rotate(180deg);
+} */
+
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 260px;
+    height: 100vh;
     background: #0B3D91;
     color: white;
     padding: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
 .logo {
