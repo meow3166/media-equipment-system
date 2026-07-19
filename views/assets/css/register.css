@@ -1,0 +1,121 @@
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #f5f7fa;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 520px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.register-logo {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.register-logo h1 {
+    margin: 0 0 10px;
+    color: #0b3d91;
+    font-size: 28px;
+}
+
+.register-logo p {
+    margin: 0;
+    color: #666666;
+    font-size: 14px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.register-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.register-group label {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.register-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #d8dde6;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+}
+
+.register-group input:focus {
+    border-color: #0b3d91;
+    box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.1);
+}
+
+.required {
+    color: #d93025;
+}
+
+.register-btn {
+    margin-top: 8px;
+    padding: 14px;
+    border: 0;
+    border-radius: 6px;
+    background-color: #0b3d91;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: #082f70;
+}
+
+.register-message {
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.register-error {
+    border: 1px solid #f2b8b5;
+    background-color: #fce8e6;
+    color: #b3261e;
+}
+
+.register-links {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.register-links a {
+    color: #0b3d91;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.register-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .register-container {
+        padding: 28px 20px;
+    }
+}

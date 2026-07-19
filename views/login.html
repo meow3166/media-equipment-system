@@ -28,47 +28,34 @@
             </div>
             {% endif %}
 
-            <form
-                action="/auth/login"
-                method="post"
-                class="login-form"
-            >
+            {% if successMessage %}
+            <div class="login-success">
+                {{ successMessage }}
+            </div>
+            {% endif %}
+
+            <form action="/auth/login" method="post" class="login-form">
 
                 <div class="login-group">
-                    <label for="P_userId">아이디</label>
+                    <label for="P_userId">아이디/학번</label>
 
-                    <input
-                        type="text"
-                        id="P_userId"
-                        name="P_userId"
-                        placeholder="아이디를 입력하세요"
-                        required
-                    >
+                    <input type="text" id="P_userId" name="P_userId" placeholder="아이디 또는 학번을 입력하세요" required>
                 </div>
 
                 <div class="login-group">
                     <label for="P_password">비밀번호</label>
 
-                    <input
-                        type="password"
-                        id="P_password"
-                        name="P_password"
-                        placeholder="비밀번호를 입력하세요"
-                        required
-                    >
+                    <input type="password" id="P_password" name="P_password" placeholder="비밀번호를 입력하세요" required>
                 </div>
 
-                <button
-                    type="submit"
-                    class="login-btn"
-                >
+                <button type="submit" class="login-btn">
                     로그인
                 </button>
 
             </form>
 
             <div class="login-links">
-                <a href="/auth/register">
+                <a href="/auth/signup">
                     회원가입
                 </a>
             </div>
