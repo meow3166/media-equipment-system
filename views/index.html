@@ -12,7 +12,7 @@
 
     <section class="quick-menu">
         <div class="dashboard-card">
-            <a href="/rental/new" class="menu-card">
+            <a href="/rental" class="menu-card">
                 대여 신청하기
             </a>    
         </div>
@@ -22,14 +22,14 @@
             </a>    
         </div>
         <div class="dashboard-card"> 
-            <a href="/my/rentals" class="menu-card">
+            <a href="/mypage/rental" class="menu-card">
                 내 대여 내역
             </a>    
         </div>
     </section>
 
     <section class="dashboard-grid">
-        <div class="dashboard-card">
+        <div class="dashboard-card rental-status-card">
             <div class="card-header">
                 <h3>내 대여 현황</h3>
                 <a href="/my/rentals" class="card-more">더보기 &gt;</a>
@@ -59,10 +59,10 @@
             </ul>
         </div>
 
-        <div class="dashboard-card">
+        <div class="dashboard-card availability-card">
             <div class="card-header">
                 <h3>대여 가능 현황</h3>
-                <a href="/equipment" class="card-more">더보기 &gt;</a>
+                <a href="/equipment/status" class="card-more">더보기 &gt;</a>
             </div>
             <ul class="availability-list">
                 {% for eq in availableEquipment %}
@@ -73,10 +73,10 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="dashboard-card">
+        <div class="dashboard-card notice-card">
             <div class="card-header">
                 <h3>최근 공지사항</h3>
-                <a href="/board/notice" class="card-more">더보기 &gt;</a>
+                <a href="/notice" class="card-more">더보기 &gt;</a>
             </div>
             <ul class="notice-list">
                 {% for notice in recentNotices %}
@@ -89,7 +89,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="dashboard-card">
+        <div class="dashboard-card guide-card">
             <div class="card-header">
                 <h3>자주 찾는 가이드</h3>
             </div>

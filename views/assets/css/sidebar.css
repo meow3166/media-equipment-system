@@ -18,8 +18,14 @@
 
 
 .arrow{
-    /* display:inline-block; */
-    transition: transform .3s;
+    display: block;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
+    color: black;
+    overflow: visible;
+    /* transition: transform 0.2s ease; */
 }
 
 /* 접힌 상태 */
@@ -38,9 +44,15 @@
 }
 
 /* 화살표 회전 */
-/* .menu-item.active .arrow{
-    transform:rotate(180deg);
-} */
+.menu-item.active .arrow{
+    transform:scaleY(-1);
+    color: white;
+}
+
+.menu-item.active > .menu-toggle{
+    background-color: #2563eb;
+    color: white;
+}
 
 .sidebar {
     position: fixed;
@@ -48,8 +60,8 @@
     left: 0;
     width: 260px;
     height: 100vh;
-    background: #0B3D91;
-    color: white;
+    background: white; /* #0B3D91 */
+    color: black;
     padding: 20px;
     overflow-y: auto;
     z-index: 1000;
@@ -68,11 +80,21 @@
     margin-bottom: 15px;
 }
 
-.sidebar nav ul li > span,
 .sidebar nav ul li > a {
     display: block;
     font-weight: 600;
     padding: 10px;
+}
+.sidebar nav ul li > .menu-toggle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-weight: 600;
 }
 
 .sidebar nav ul li ul {
