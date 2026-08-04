@@ -2,11 +2,11 @@ const pool = require("../database/db");
 const bcrypt = require("bcrypt");
 
 exports.getLoginPage = (req, res) => {
-    res.render("login.html");
+    res.render("auth/login.html");
 };
 
 exports.getRegisterPage = (req, res) => {
-    res.render("signup.html");
+    res.render("auth/signup.html");
 };
 
 exports.register = async (req, res) => {
@@ -33,28 +33,28 @@ exports.register = async (req, res) => {
             !password ||
             !password_confirm
         ) {
-            return res.status(400).render("signup.html", {
+            return res.status(400).render("auth/signup.html", {
                 errorMessage: "필수 항목을 모두 입력해 주세요.",
                 registerData
             });
         }
 
         if (!/^\d+$/.test(registerData.login_id)) {
-            return res.status(400).render("signup.html", {
+            return res.status(400).render("auth/signup.html", {
                 errorMessage: "학번은 숫자로만 입력해 주세요.",
                 registerData
             });
         }
 
         if (password.length < 8) {
-            return res.status(400).render("signup.html", {
+            return res.status(400).render("auth/signup.html", {
                 errorMessage: "비밀번호는 8자 이상 입력해 주세요.",
                 registerData
             });
         }
 
         if (password !== password_confirm) {
-            return res.status(400).render("signup.html", {
+            return res.status(400).render("auth/signup.html", {
                 errorMessage: "비밀번호와 비밀번호 확인이 일치하지 않습니다.",
                 registerData
             });
@@ -71,7 +71,7 @@ exports.register = async (req, res) => {
         );
 
         if (existingUsers.length > 0) {
-            return res.status(409).render("signup.html", {
+            return res.status(409).render("auth/signup.html", {
                 errorMessage: "이미 가입된 학번입니다.",
                 registerData
             });
@@ -101,7 +101,7 @@ exports.register = async (req, res) => {
             ]
         );
 
-        return res.render("login.html", {
+        return res.render("auth/login.html", {
             successMessage:
                 "회원가입이 완료되었습니다. 관리자 승인 후 로그인할 수 있습니다."
         });
@@ -109,7 +109,7 @@ exports.register = async (req, res) => {
     } catch (error) {
         console.error("회원가입 오류:", error);
 
-        return res.status(500).render("signup.html", {
+        return res.status(500).render("auth/signup.html", {
             errorMessage: "회원가입 처리 중 오류가 발생했습니다.",
             registerData
         });
@@ -121,7 +121,7 @@ exports.login = async (req, res) => {
 
     try {
         if (!P_userId || !P_password) {
-            return res.status(400).render("login.html", {
+            return res.status(400).render("auth/login.html", {
                 errorMessage: "학번과 비밀번호를 모두 입력해 주세요."
             });
         }
@@ -143,7 +143,7 @@ exports.login = async (req, res) => {
         );
 
         if (rows.length === 0) {
-            return res.status(401).render("login.html", {
+            return res.status(401).render("auth/login.html", {
                 errorMessage: "학번 또는 비밀번호가 올바르지 않습니다."
             });
         }
@@ -156,25 +156,25 @@ exports.login = async (req, res) => {
         );
 
         if (!isPasswordMatch) {
-            return res.status(401).render("login.html", {
+            return res.status(401).render("auth/login.html", {
                 errorMessage: "학번 또는 비밀번호가 올바르지 않습니다."
             });
         }
 
         if (user.user_status === "pending") {
-            return res.status(403).render("login.html", {
+            return res.status(403).render("auth/login.html", {
                 errorMessage: "관리자 승인 대기 중인 계정입니다."
             });
         }
 
         if (user.user_status === "rejected") {
-            return res.status(403).render("login.html", {
+            return res.status(403).render("auth/login.html", {
                 errorMessage: "가입이 거절된 계정입니다."
             });
         }
 
         if (user.user_status === "blocked") {
-            return res.status(403).render("login.html", {
+            return res.status(403).render("auth/login.html", {
                 errorMessage: "차단된 계정입니다. 관리자에게 문의해 주세요."
             });
         }
@@ -191,7 +191,7 @@ exports.login = async (req, res) => {
     } catch (error) {
         console.error("로그인 오류:", error);
 
-        return res.status(500).render("login.html", {
+        return res.status(500).render("auth/login.html", {
             errorMessage: "로그인 처리 중 오류가 발생했습니다."
         });
     }
