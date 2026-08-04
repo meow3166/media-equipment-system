@@ -1,0 +1,91 @@
+{% include "includes/admin-layout-top.html" %}
+
+<main class="admin-content">
+    {% if query.success %}
+        <div class="alert success">
+            {{ query.success }}
+        </div>
+    {% endif %}
+
+    {% if query.error %}
+        <div class="alert error">
+            {{ query.error }}
+        </div>
+    {% endif %}
+
+    <section class="admin-panel">
+        <div class="panel-header">
+            <div>
+                <h2>승인 대기 회원</h2>
+                <p>가입 정보를 확인한 후 승인 또는 거절해 주세요.</p>
+            </div>
+
+            <span class="count-badge">
+                총 {{ pendingUsers | length }}명
+            </span>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>학번</th>
+                        <th>이름</th>
+                        <th>연락처</th>
+                        <th>이메일</th>
+                        <th>처리</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for pendingUser in pendingUsers %}
+                        <tr>
+                            <td>{{ pendingUser.login_id }}</td>
+                            <td>{{ pendingUser.user_name }}</td>
+                            <td>{{ pendingUser.phone or "-" }}</td>
+                            <td>{{ pendingUser.email or "-" }}</td>
+
+                            <td>
+                                <div class="action-buttons">
+                                    <form
+                                        action="/admin/users/{{ pendingUser.user_id }}/approve"
+                                        method="POST"
+                                        onsubmit="return confirm('이 회원을 승인하시겠습니까?');"
+                                    >
+                                        <button
+                                            type="submit"
+                                            class="approve-button"
+                                        >
+                                            승인
+                                        </button>
+                                    </form>
+
+                                    <form
+                                        action="/admin/users/{{ pendingUser.user_id }}/reject"
+                                        method="POST"
+                                        onsubmit="return confirm('이 회원의 가입을 거절하시겠습니까?');"
+                                    >
+                                        <button
+                                            type="submit"
+                                            class="reject-button"
+                                        >
+                                            거절
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="empty-table">
+                                승인 대기 중인 회원이 없습니다.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+{% include "includes/admin-layout-bottom.html" %}

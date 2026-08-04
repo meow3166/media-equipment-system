@@ -9,6 +9,12 @@
                 <a href="/">홈</a>
             </li>
 
+            {% if loginUser and loginUser.role == 'admin' %}
+            <li class="menu-item">
+                <a href="/admin">관리자 대시보드</a>
+            </li>
+            {% endif %}
+
             <li class="menu-item">
                 <span class="menu-toggle">
                     기자재

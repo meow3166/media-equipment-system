@@ -1,0 +1,85 @@
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 260px;
+    height: 100vh;
+    padding: 25px 20px;
+
+    background: #0b2d5c;
+    color: #ffffff;
+
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.admin-logo {
+    margin-bottom: 35px;
+    padding: 0 10px;
+}
+
+.admin-logo h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.admin-logo span {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 3px 7px;
+
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.admin-menu,
+.admin-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.admin-menu > li {
+    margin-bottom: 10px;
+}
+
+.admin-menu a,
+.admin-menu-title {
+    display: block;
+    padding: 11px 12px;
+    border-radius: 8px;
+
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.admin-menu > li > a,
+.admin-menu-title {
+    font-weight: 600;
+}
+
+.admin-menu a:hover {
+    background: rgba(255, 255, 255, 0.13);
+}
+
+.admin-menu-group ul {
+    margin: 4px 0 8px 12px;
+}
+
+.admin-menu-group ul a {
+    padding: 9px 12px;
+    color: #dbeafe;
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    .admin-sidebar {
+        display: none;
+    }
+}

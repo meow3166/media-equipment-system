@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/admin-common.css">
+    <link rel="stylesheet" href="/assets/css/admin-sidebar.css">
+
+    <title>{{ pageTitle or "관리자 페이지" }}</title>
+</head>
+
+<body>
+    <div class="admin-container">
+        {% include "includes/admin-sidebar.html" %}
+
+        <div class="admin-main-area">
+            <header class="admin-header">
+                <div>
+                    <h1>{{ pageTitle or "관리자 페이지" }}</h1>
+                    <p>영방과 기자재 대여 시스템 관리 페이지입니다.</p>
+                </div>
+
+                <div class="admin-user">
+                    <div>
+                        <strong>{{ user.name }}</strong>
+                        <span>시스템 관리자</span>
+                    </div>
+
+                    <a href="/auth/logout" class="logout-button">
+                        로그아웃
+                    </a>
+                </div>
+            </header>
